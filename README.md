@@ -6,3 +6,4 @@ and a [client](https://github.com/YektaDev/university-college-client).
 #### **📞 Communications:** Parties only use `java.net` sockets and a simple protocol in order to communicate with each other.
 #### **🖼️ UI:** Client's UI is implemented in [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform).
 
+![Screenshot](screenshot.jpg)

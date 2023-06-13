@@ -1,4 +1,5 @@
 import java.io.File
+import java.net.SocketException
 import kotlin.concurrent.thread
 
 private const val RECORD_COUNT = 9
@@ -13,7 +14,11 @@ fun main() {
             server.send(i, read(collegeIndex = i))
             while (!server.sockets[i].isClosed) {
                 println("Listening to client of college ${i + 1}...")
-                val request = server.receive(i)
+                val request = try {
+                    server.receive(i)
+                } catch (_: SocketException) {
+                    break
+                }
                 println("Client of college ${i + 1} sent '$request'")
                 val response = processData(i, request)
                 val responseLog = response.takeIf { it.lines().size == 1 }?.let { "'$it'" } ?: "a long response"
